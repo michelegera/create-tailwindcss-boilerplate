@@ -1,0 +1,14 @@
+{
+  "name": "create-tailwindcss-boilerplate",
+  "version": "0.0.0",
+  "description": "A bare-bones Tailwind CSS boilerplate",
+  "bin": "./index.js",
+  "author": "Michele Gerarduzzi <michelegera@users.noreply.github.com>",
+  "license": "MIT",
+  "keywords": [
+    "boilerplate",
+    "css",
+    "tailwind",
+    "tailwindcss"
+  ]
+}
