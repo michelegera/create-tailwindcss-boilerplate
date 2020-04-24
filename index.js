@@ -3,7 +3,22 @@ const Listr = require('Listr');
 const tasks = new Listr([
   {
     title: 'Create directory structure',
-    task: () => {},
+    task: () => {
+      return new Listr([
+        {
+          title: 'src/css',
+          task: () => {},
+        },
+        {
+          title: 'src/img',
+          task: () => {},
+        },
+        {
+          title: 'src/js',
+          task: () => {},
+        },
+      ]);
+    },
   },
   {
     title: 'Create PostCSS configuration',
@@ -11,11 +26,33 @@ const tasks = new Listr([
   },
   {
     title: 'Create templates',
-    task: () => {},
+    task: () => {
+      return new Listr([
+        {
+          title: './index.html',
+          task: () => {},
+        },
+        {
+          title: './src/css/main.css',
+          task: () => {},
+        },
+      ]);
+    },
   },
   {
     title: 'Install dependencies',
-    task: () => {},
+    task: () => {
+      return new Listr([
+        {
+          title: 'Create package.json',
+          task: () => {},
+        },
+        {
+          title: 'Install dependencies',
+          task: () => {},
+        },
+      ]);
+    },
   },
 ]);
 
