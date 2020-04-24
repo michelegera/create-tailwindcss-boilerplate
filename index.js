@@ -1,23 +1,30 @@
+const fs = require('fs');
 const Listr = require('Listr');
 
 const tasks = new Listr([
   {
     title: 'Create directory structure',
     task: () => {
-      return new Listr([
-        {
-          title: 'src/css',
-          task: () => {},
-        },
-        {
-          title: 'src/img',
-          task: () => {},
-        },
-        {
-          title: 'src/js',
-          task: () => {},
-        },
-      ]);
+      const directories = ['src/css', 'src/img', 'src/js'];
+
+      return new Listr(
+        directories.map((dir) => {
+          return {
+            title: dir,
+            task: () =>
+              fs.mkdir(
+                dir,
+                {
+                  recursive: true,
+                },
+                (err) => {
+                  if (err)
+                    throw new Error(`Cannot create directory ${dir}: ${err}`);
+                }
+              ),
+          };
+        })
+      );
     },
   },
   {
