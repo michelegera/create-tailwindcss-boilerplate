@@ -12,22 +12,9 @@ const tasks = new Listr([
     task: () => {
       const directories = ['src/css', 'src/img', 'src/js'];
 
-      return new Listr(
-        directories.map((dir) => {
-          return {
-            title: dir,
-            task: async () =>
-              await fs.mkdir(
-                dir,
-                {
-                  recursive: true,
-                },
-                (err) => {
-                  if (err)
-                    throw new Error(`Cannot create directory ${dir}: ${err}`);
-                }
-              ),
-          };
+      directories.forEach((dir) =>
+        fs.mkdirSync(dir, { recursive: true }, (err) => {
+          if (err) throw new Error(`Cannot create directory ${dir}: ${err}`);
         })
       );
     },
