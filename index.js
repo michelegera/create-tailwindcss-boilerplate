@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 const Listr = require('Listr');
 
 const tasks = new Listr([
@@ -29,7 +30,12 @@ const tasks = new Listr([
   },
   {
     title: 'Create PostCSS configuration',
-    task: () => {},
+    task: () => {
+      const source = path.join(__dirname, 'templates', 'postcss.config.js');
+      const destination = path.join(__dirname, 'postcss.config.js');
+
+      fs.copyFileSync(source, destination);
+    },
   },
   {
     title: 'Create templates',
