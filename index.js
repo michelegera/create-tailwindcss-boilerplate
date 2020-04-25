@@ -14,8 +14,8 @@ const tasks = new Listr([
         directories.map((dir) => {
           return {
             title: dir,
-            task: () =>
-              fs.mkdir(
+            task: async () =>
+              await fs.mkdir(
                 dir,
                 {
                   recursive: true,
@@ -32,11 +32,13 @@ const tasks = new Listr([
   },
   {
     title: 'Create PostCSS configuration',
-    task: () => {
+    task: async () => {
       const source = path.join(__dirname, 'templates', 'postcss.config.js');
       const destination = path.join(__dirname, 'postcss.config.js');
 
-      fs.copyFileSync(source, destination);
+      await fs.copyFile(source, destination, (err) => {
+        if (err) throw new Error(`Cannot create PostCSS configuration: ${err}`);
+      });
     },
   },
   {
@@ -45,20 +47,24 @@ const tasks = new Listr([
       return new Listr([
         {
           title: 'index.html',
-          task: () => {
+          task: async () => {
             const source = path.join(__dirname, 'templates', 'index.html');
             const destination = path.join(__dirname, 'src', 'index.html');
 
-            fs.copyFileSync(source, destination);
+            await fs.copyFile(source, destination, (err) => {
+              if (err) throw new Error(`Cannot create index.html: ${err}`);
+            });
           },
         },
         {
           title: 'main.css',
-          task: () => {
+          task: async () => {
             const source = path.join(__dirname, 'templates', 'main.css');
             const destination = path.join(__dirname, 'src', 'css', 'main.css');
 
-            fs.copyFileSync(source, destination);
+            await fs.copyFile(source, destination, (err) => {
+              if (err) throw new Error(`Cannot create main.css: ${err}`);
+            });
           },
         },
       ]);
@@ -70,16 +76,18 @@ const tasks = new Listr([
       return new Listr([
         {
           title: 'Create package.json',
-          task: () => {
+          task: async () => {
             const source = path.join(__dirname, 'templates', 'package.json');
             const destination = path.join(__dirname, 'package.json');
 
-            fs.copyFileSync(source, destination);
+            await fs.copyFile(source, destination, (err) => {
+              if (err) throw new Error(`Cannot create package.json: ${err}`);
+            });
           },
         },
         {
           title: 'Install dependencies',
-          task: () => {
+          task: async () => {
             const params = ['add', '-D'];
             const dependencies = [
               '@fullhuman/postcss-purgecss',
@@ -89,7 +97,7 @@ const tasks = new Listr([
               'tailwindcss',
             ];
 
-            execa.sync('yarn', [...params, ...dependencies]);
+            await execa('yarn', [...params, ...dependencies]);
           },
         },
       ]);
