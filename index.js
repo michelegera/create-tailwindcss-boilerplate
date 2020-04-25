@@ -42,12 +42,22 @@ const tasks = new Listr([
     task: () => {
       return new Listr([
         {
-          title: './index.html',
-          task: () => {},
+          title: 'index.html',
+          task: () => {
+            const source = path.join(__dirname, 'templates', 'index.html');
+            const destination = path.join(__dirname, 'src', 'index.html');
+
+            fs.copyFileSync(source, destination);
+          },
         },
         {
-          title: './src/css/main.css',
-          task: () => {},
+          title: 'main.css',
+          task: () => {
+            const source = path.join(__dirname, 'templates', 'main.css');
+            const destination = path.join(__dirname, 'src', 'css', 'main.css');
+
+            fs.copyFileSync(source, destination);
+          },
         },
       ]);
     },
