@@ -25,7 +25,7 @@ const tasks = new Listr([
       const source = path.join(__dirname, 'templates', 'postcss.config.js');
       const destination = path.join('postcss.config.js');
 
-      await fs.copyFile(source, destination, (err) => {
+      fs.copyFile(source, destination, (err) => {
         if (err) throw new Error(`Cannot create PostCSS configuration: ${err}`);
       });
     },
@@ -40,7 +40,7 @@ const tasks = new Listr([
             const source = path.join(__dirname, 'templates', 'index.html');
             const destination = path.join('src', 'index.html');
 
-            await fs.copyFile(source, destination, (err) => {
+            fs.copyFile(source, destination, (err) => {
               if (err) throw new Error(`Cannot create index.html: ${err}`);
             });
           },
@@ -51,7 +51,7 @@ const tasks = new Listr([
             const source = path.join(__dirname, 'templates', 'main.css');
             const destination = path.join('src', 'css', 'main.css');
 
-            await fs.copyFile(source, destination, (err) => {
+            fs.copyFile(source, destination, (err) => {
               if (err) throw new Error(`Cannot create main.css: ${err}`);
             });
           },
@@ -69,7 +69,7 @@ const tasks = new Listr([
             const source = path.join(__dirname, 'templates', 'package.json');
             const destination = path.join('package.json');
 
-            await fs.copyFile(source, destination, (err) => {
+            fs.copyFile(source, destination, (err) => {
               if (err) throw new Error(`Cannot create package.json: ${err}`);
             });
           },
