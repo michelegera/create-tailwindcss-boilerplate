@@ -36,7 +36,7 @@ const tasks = new Listr([
     title: 'Create PostCSS configuration',
     task: async () => {
       const source = path.join(__dirname, 'templates', 'postcss.config.js');
-      const destination = path.join(__dirname, 'postcss.config.js');
+      const destination = path.join('postcss.config.js');
 
       await fs.copyFile(source, destination, (err) => {
         if (err) throw new Error(`Cannot create PostCSS configuration: ${err}`);
@@ -51,7 +51,7 @@ const tasks = new Listr([
           title: 'index.html',
           task: async () => {
             const source = path.join(__dirname, 'templates', 'index.html');
-            const destination = path.join(__dirname, 'src', 'index.html');
+            const destination = path.join('src', 'index.html');
 
             await fs.copyFile(source, destination, (err) => {
               if (err) throw new Error(`Cannot create index.html: ${err}`);
@@ -62,7 +62,7 @@ const tasks = new Listr([
           title: 'main.css',
           task: async () => {
             const source = path.join(__dirname, 'templates', 'main.css');
-            const destination = path.join(__dirname, 'src', 'css', 'main.css');
+            const destination = path.join('src', 'css', 'main.css');
 
             await fs.copyFile(source, destination, (err) => {
               if (err) throw new Error(`Cannot create main.css: ${err}`);
@@ -80,7 +80,7 @@ const tasks = new Listr([
           title: 'Create package.json',
           task: async () => {
             const source = path.join(__dirname, 'templates', 'package.json');
-            const destination = path.join(__dirname, 'package.json');
+            const destination = path.join('package.json');
 
             await fs.copyFile(source, destination, (err) => {
               if (err) throw new Error(`Cannot create package.json: ${err}`);
