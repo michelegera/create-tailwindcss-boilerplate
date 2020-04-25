@@ -1,5 +1,7 @@
 const fs = require('fs');
 const path = require('path');
+
+const execa = require('execa');
 const Listr = require('Listr');
 
 const tasks = new Listr([
@@ -68,11 +70,27 @@ const tasks = new Listr([
       return new Listr([
         {
           title: 'Create package.json',
-          task: () => {},
+          task: () => {
+            const source = path.join(__dirname, 'templates', 'package.json');
+            const destination = path.join(__dirname, 'package.json');
+
+            fs.copyFileSync(source, destination);
+          },
         },
         {
           title: 'Install dependencies',
-          task: () => {},
+          task: () => {
+            const params = ['add', '-D'];
+            const dependencies = [
+              '@fullhuman/postcss-purgecss',
+              'autoprefixer',
+              'parcel-bundler',
+              'postcss',
+              'tailwindcss',
+            ];
+
+            execa.sync('yarn', [...params, ...dependencies]);
+          },
         },
       ]);
     },
