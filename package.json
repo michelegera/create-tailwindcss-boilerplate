@@ -1,6 +1,6 @@
 {
   "name": "create-tailwindcss-boilerplate",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A bare-bones Tailwind CSS boilerplate",
   "bin": "./index.js",
   "author": "Michele Gerarduzzi <michelegera@users.noreply.github.com>",
