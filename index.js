@@ -86,7 +86,7 @@ const tasks = new Listr([
   },
   {
     title: 'Install dependencies',
-    task: (context) => {
+    task: () => {
       return new Listr([
         {
           title: 'Create package.json',
@@ -101,7 +101,7 @@ const tasks = new Listr([
           },
         },
         {
-          title: 'Install dependencies',
+          title: 'Set up dependencies',
           task: async (context) => {
             const root = context.root;
             const params = ['add', '-D'];
