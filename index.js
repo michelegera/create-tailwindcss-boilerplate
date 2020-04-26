@@ -7,25 +7,46 @@ const path = require('path');
 
 const execa = require('execa');
 const Listr = require('Listr');
+const inquirer = require('inquirer');
+
+const questions = [
+  {
+    type: 'input',
+    name: 'root',
+    message: 'Choose project root directory',
+    validate: (value) =>
+      value?.trim().length > 0 ? true : 'Please enter a valid name',
+  },
+];
 
 const tasks = new Listr([
   {
     title: 'Create directory structure',
-    task: () => {
-      const directories = ['src/css', 'src/img', 'src/js'];
+    task: (context) => {
+      const root = context.root;
+      const tree = ['src/css', 'src/img', 'src/js'];
 
-      directories.forEach((dir) =>
+      if (fs.existsSync(root)) {
+        throw new Error(`Project directory ${root} already exists`);
+      }
+
+      fs.mkdirSync(root);
+
+      tree.forEach((branch) => {
+        const dir = path.join(root, branch);
+
         fs.mkdirSync(dir, { recursive: true }, (err) => {
           if (err) throw new Error(`Cannot create directory ${dir}: ${err}`);
-        })
-      );
+        });
+      });
     },
   },
   {
     title: 'Create PostCSS configuration',
-    task: async () => {
+    task: async (context) => {
+      const root = context.root;
       const source = path.join(__dirname, 'templates', 'postcss.config.js');
-      const destination = path.join('postcss.config.js');
+      const destination = path.join(root, 'postcss.config.js');
 
       fs.copyFile(source, destination, (err) => {
         if (err) throw new Error(`Cannot create PostCSS configuration: ${err}`);
@@ -38,9 +59,10 @@ const tasks = new Listr([
       return new Listr([
         {
           title: 'index.html',
-          task: async () => {
+          task: async (context) => {
+            const root = context.root;
             const source = path.join(__dirname, 'templates', 'index.html');
-            const destination = path.join('src', 'index.html');
+            const destination = path.join(root, 'src', 'index.html');
 
             fs.copyFile(source, destination, (err) => {
               if (err) throw new Error(`Cannot create index.html: ${err}`);
@@ -49,9 +71,10 @@ const tasks = new Listr([
         },
         {
           title: 'main.css',
-          task: async () => {
+          task: async (context) => {
+            const root = context.root;
             const source = path.join(__dirname, 'templates', 'main.css');
-            const destination = path.join('src', 'css', 'main.css');
+            const destination = path.join(root, 'src', 'css', 'main.css');
 
             fs.copyFile(source, destination, (err) => {
               if (err) throw new Error(`Cannot create main.css: ${err}`);
@@ -63,13 +86,14 @@ const tasks = new Listr([
   },
   {
     title: 'Install dependencies',
-    task: () => {
+    task: (context) => {
       return new Listr([
         {
           title: 'Create package.json',
-          task: async () => {
+          task: async (context) => {
+            const root = context.root;
             const source = path.join(__dirname, 'templates', 'package.json');
-            const destination = path.join('package.json');
+            const destination = path.join(root, 'package.json');
 
             fs.copyFile(source, destination, (err) => {
               if (err) throw new Error(`Cannot create package.json: ${err}`);
@@ -78,7 +102,8 @@ const tasks = new Listr([
         },
         {
           title: 'Install dependencies',
-          task: async () => {
+          task: async (context) => {
+            const root = context.root;
             const params = ['add', '-D'];
             const dependencies = [
               '@fullhuman/postcss-purgecss',
@@ -88,6 +113,8 @@ const tasks = new Listr([
               'tailwindcss',
             ];
 
+            process.chdir(root);
+
             await execa('yarn', [...params, ...dependencies]);
           },
         },
@@ -96,4 +123,6 @@ const tasks = new Listr([
   },
 ]);
 
-tasks.run().catch((err) => console.log(err));
+inquirer.prompt(questions).then((answers) => {
+  tasks.run(answers).catch((err) => console.log(err));
+});
