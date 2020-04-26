@@ -12,16 +12,20 @@ in production builds.
 
 - [Yarn](https://yarnpkg.com)
 
-### Create your project folder
-
-```bash
-$ mkdir <new-project> && cd <new-project>
-```
-
 ### Create boilerplate
 
 ```bash
 $ yarn create tailwindcss-boilerplate
+```
+
+Follow instructions at the prompt to create your project:
+
+```bash
+? Choose project root directory my-project
+  ✔ Create directory structure
+  ✔ Create PostCSS configuration
+  ✔ Create templates
+  ✔ Set up dependencies
 ```
 
 ### Run server
