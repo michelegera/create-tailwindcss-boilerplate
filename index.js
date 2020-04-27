@@ -42,15 +42,39 @@ const tasks = new Listr([
     },
   },
   {
-    title: 'Create PostCSS configuration',
-    task: async (context) => {
-      const root = context.root;
-      const source = path.join(__dirname, 'templates', 'postcss.config.js');
-      const destination = path.join(root, 'postcss.config.js');
+    title: 'Create project files',
+    task: () => {
+      return new Listr([
+        {
+          title: 'Create PostCSS configuration',
+          task: async (context) => {
+            const root = context.root;
+            const source = path.join(
+              __dirname,
+              'templates',
+              'postcss.config.js'
+            );
+            const destination = path.join(root, 'postcss.config.js');
 
-      fs.copyFile(source, destination, (err) => {
-        if (err) throw new Error(`Cannot create PostCSS configuration: ${err}`);
-      });
+            fs.copyFile(source, destination, (err) => {
+              if (err)
+                throw new Error(`Cannot create PostCSS configuration: ${err}`);
+            });
+          },
+        },
+        {
+          title: 'Create gitignore file',
+          task: async (context) => {
+            const root = context.root;
+            const source = path.join(__dirname, 'templates', '.gitignore');
+            const destination = path.join(root, '.gitignore');
+
+            fs.copyFile(source, destination, (err) => {
+              if (err) throw new Error(`Cannot create gitignore file: ${err}`);
+            });
+          },
+        },
+      ]);
     },
   },
   {

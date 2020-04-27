@@ -23,7 +23,7 @@ Follow instructions at the prompt to create your project:
 ```bash
 ? Choose project root directory my-project
   ✔ Create directory structure
-  ✔ Create PostCSS configuration
+  ✔ Create project files
   ✔ Create templates
   ✔ Set up dependencies
 ```
