@@ -10,12 +10,17 @@ in production builds.
 
 ### Requirements
 
-- [Yarn](https://yarnpkg.com)
+[Yarn](https://yarnpkg.com) is suggested, but not required. The project will be
+set up with [npm](https://www.npmjs.com/get-npm) if Yarn is not found.
 
 ### Create boilerplate
 
 ```bash
 $ yarn create tailwindcss-boilerplate
+
+# or
+
+$ npx create-tailwindcss-boilerplate
 ```
 
 Follow instructions at the prompt to create your project:

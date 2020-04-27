@@ -9,6 +9,14 @@ const execa = require('execa');
 const Listr = require('Listr');
 const inquirer = require('inquirer');
 
+const dependencies = [
+  '@fullhuman/postcss-purgecss',
+  'autoprefixer',
+  'parcel-bundler',
+  'postcss',
+  'tailwindcss',
+];
+
 const questions = [
   {
     type: 'input',
@@ -109,7 +117,7 @@ const tasks = new Listr([
     },
   },
   {
-    title: 'Install dependencies',
+    title: 'Set up dependencies',
     task: () => {
       return new Listr([
         {
@@ -125,21 +133,27 @@ const tasks = new Listr([
           },
         },
         {
-          title: 'Set up dependencies',
-          task: async (context) => {
+          title: 'Install dependencies with Yarn',
+          task: async (context, task) => {
             const root = context.root;
             const params = ['add', '-D'];
-            const dependencies = [
-              '@fullhuman/postcss-purgecss',
-              'autoprefixer',
-              'parcel-bundler',
-              'postcss',
-              'tailwindcss',
-            ];
 
             process.chdir(root);
 
-            await execa('yarn', [...params, ...dependencies]);
+            await execa('yarn', [...params, ...dependencies]).catch(() => {
+              context.yarn = false;
+              task.skip('Yarn not available');
+            });
+          },
+        },
+        {
+          title: 'Install dependencies with npm',
+          enabled: (context) => context.yarn === false,
+          task: async (context) => {
+            const root = context.root;
+            const params = ['install', '--save-dev'];
+
+            await execa('npm', [...params, ...dependencies]);
           },
         },
       ]);
