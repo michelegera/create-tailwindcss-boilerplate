@@ -66,7 +66,7 @@ const tasks = new Listr([
           title: 'Create gitignore file',
           task: async (context) => {
             const root = context.root;
-            const source = path.join(__dirname, 'templates', '.gitignore');
+            const source = path.join(__dirname, 'templates', '_gitignore');
             const destination = path.join(root, '.gitignore');
 
             fs.copyFile(source, destination, (err) => {
@@ -116,7 +116,7 @@ const tasks = new Listr([
           title: 'Create package.json',
           task: async (context) => {
             const root = context.root;
-            const source = path.join(__dirname, 'templates', 'package.json');
+            const source = path.join(__dirname, 'templates', '_package.json');
             const destination = path.join(root, 'package.json');
 
             fs.copyFile(source, destination, (err) => {
