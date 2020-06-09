@@ -149,8 +149,7 @@ const tasks = new Listr([
         {
           title: 'Install dependencies with npm',
           enabled: (context) => context.yarn === false,
-          task: async (context) => {
-            const root = context.root;
+          task: async () => {
             const params = ['install', '--save-dev'];
 
             await execa('npm', [...params, ...dependencies]);
