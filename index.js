@@ -11,10 +11,10 @@ const inquirer = require('inquirer');
 
 const dependencies = [
   '@fullhuman/postcss-purgecss',
-  'autoprefixer',
+  'autoprefixer@^9',
   'parcel-bundler',
-  'postcss',
-  'tailwindcss',
+  'postcss@^7',
+  'tailwindcss@compat',
 ];
 
 const questions = [
