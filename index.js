@@ -6,7 +6,7 @@ const fs = require('fs');
 const path = require('path');
 
 const execa = require('execa');
-const Listr = require('Listr');
+const Listr = require('listr');
 const inquirer = require('inquirer');
 
 const dependencies = [
