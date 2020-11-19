@@ -54,6 +54,25 @@ const tasks = new Listr([
     task: () => {
       return new Listr([
         {
+          title: 'Create Tailwind CSS configuration',
+          task: async (context) => {
+            const root = context.root;
+            const source = path.join(
+              __dirname,
+              'templates',
+              'tailwind.config.js'
+            );
+            const destination = path.join(root, 'tailwind.config.js');
+
+            fs.copyFile(source, destination, (err) => {
+              if (err)
+                throw new Error(
+                  `Cannot create Tailwind CSS configuration: ${err}`
+                );
+            });
+          },
+        },
+        {
           title: 'Create PostCSS configuration',
           task: async (context) => {
             const root = context.root;
