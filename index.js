@@ -14,7 +14,7 @@ const dependencies = [
   'autoprefixer@^9',
   'parcel-bundler',
   'postcss@^7',
-  'tailwindcss@compat',
+  'tailwindcss@npm:@tailwindcss/postcss7-compat',
 ];
 
 const questions = [
