@@ -54,6 +54,8 @@ Build files will end up in `/dist`.
 If you want to add a feature, fix a bug or propose a change, please feel free to
 [submit an issue](https://github.com/michelegera/create-tailwindcss-boilerplate/issues/new) or [open a pull request](https://github.com/michelegera/create-tailwindcss-boilerplate/compare).
 
+Thanks to [all the contributors](https://github.com/michelegera/create-tailwindcss-boilerplate/graphs/contributors)!
+
 ## Acknowledgments
 
 This project piggybacks on the excellent [TailwindCSS + Parcel + PurgeCSS
