@@ -6,15 +6,15 @@ const fs = require('fs');
 const path = require('path');
 
 const execa = require('execa');
-const Listr = require('Listr');
+const Listr = require('listr');
 const inquirer = require('inquirer');
 
 const dependencies = [
   '@fullhuman/postcss-purgecss',
-  'autoprefixer',
+  'autoprefixer@^9',
   'parcel-bundler',
-  'postcss',
-  'tailwindcss',
+  'postcss@^7',
+  'tailwindcss@compat',
 ];
 
 const questions = [
