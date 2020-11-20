@@ -8,6 +8,7 @@ const path = require('path');
 const execa = require('execa');
 const Listr = require('listr');
 const inquirer = require('inquirer');
+const isInvalid = require('is-invalid-path');
 
 const dependencies = [
   '@fullhuman/postcss-purgecss',
@@ -23,7 +24,7 @@ const questions = [
     name: 'root',
     message: 'Choose project root directory',
     validate: (value) =>
-      value.trim().length > 0 ? true : 'Please enter a valid name',
+      isInvalid(value.trim()) ? 'Please enter a valid path' : true,
   },
 ];
 
