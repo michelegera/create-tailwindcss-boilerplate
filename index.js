@@ -23,7 +23,7 @@ const questions = [
     name: 'root',
     message: 'Choose project root directory',
     validate: (value) =>
-      value?.trim().length > 0 ? true : 'Please enter a valid name',
+      value.trim().length > 0 ? true : 'Please enter a valid name',
   },
 ];
 
