@@ -33,7 +33,7 @@
   "dependencies": {
     "execa": "^4.0.0",
     "inquirer": "^7.1.0",
-    "is-invalid-path": "^1.0.2",
-    "listr": "^0.14.3"
+    "listr": "^0.14.3",
+    "valid-filename": "^3.1.0"
   }
 }
