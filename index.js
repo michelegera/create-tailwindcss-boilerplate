@@ -22,7 +22,7 @@ const questions = [
   {
     type: 'input',
     name: 'root',
-    message: 'Choose project root directory',
+    message: 'Create project root directory',
     validate: (value) =>
       validFilename(value.trim()) ? true : 'Please enter a valid path',
   },
