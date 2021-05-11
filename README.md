@@ -26,7 +26,7 @@ $ npx create-tailwindcss-boilerplate
 Follow instructions at the prompt to create your project:
 
 ```bash
-? Choose project root directory my-project
+? Name your project root directory my-project
   ✔ Create directory structure
   ✔ Create project files
   ✔ Create templates
