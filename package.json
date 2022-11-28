@@ -23,7 +23,7 @@
     "eslint-plugin-prettier": "^3.4.0",
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
-    "prettier": "^2.3.0"
+    "prettier": "^2.8.0"
   },
   "dependencies": {
     "execa": "^4.0.0",
