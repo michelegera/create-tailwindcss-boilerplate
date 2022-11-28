@@ -11,11 +11,14 @@ const inquirer = require('inquirer');
 const validFilename = require('valid-filename');
 
 const dependencies = [
-  '@fullhuman/postcss-purgecss',
-  'autoprefixer@^9',
-  'parcel-bundler',
-  'postcss@^7',
-  'tailwindcss@npm:@tailwindcss/postcss7-compat',
+  // Parcel dependencies
+  // https://github.com/postcss/postcss/wiki/PostCSS-8-for-end-users#parcel
+  'parcel@nightly',
+
+  // Tailwind CSS dependencies
+  'tailwindcss',
+  'postcss',
+  'autoprefixer',
 ];
 
 const questions = [
@@ -77,12 +80,8 @@ const tasks = new Listr([
           title: 'Create PostCSS configuration',
           task: async (context) => {
             const root = context.root;
-            const source = path.join(
-              __dirname,
-              'templates',
-              'postcss.config.js'
-            );
-            const destination = path.join(root, 'postcss.config.js');
+            const source = path.join(__dirname, 'templates', '.postcssrc');
+            const destination = path.join(root, '.postcssrc');
 
             fs.copyFile(source, destination, (err) => {
               if (err)
