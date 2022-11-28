@@ -2,25 +2,24 @@
 
 A bare-bones Tailwind CSS boilerplate.
 
-It creates a simple HTML + CSS template with [Tailwind CSS](https://tailwindcss.com)
-support, served by [Parcel](https://parceljs.org) and using [PurgeCSS](https://purgecss.com)
-in production builds.
+It creates a simple HTML + CSS template with [Tailwind CSS][tailwind] support,
+served by [Parcel][parcel] and using [PurgeCSS][purgecss] in production builds.
 
 ## Getting started
 
 ### Requirements
 
-[Yarn](https://yarnpkg.com) is suggested, but not required. The project will be
-set up with [npm](https://www.npmjs.com/get-npm) if Yarn is not found.
+[Yarn][yarn] is suggested, but not required. The project will be set up with
+[npm][npm] if Yarn is not found.
 
 ### Create boilerplate
 
 ```bash
-$ yarn create tailwindcss-boilerplate
+yarn create tailwindcss-boilerplate
 
 # or
 
-$ npx create-tailwindcss-boilerplate
+npx create-tailwindcss-boilerplate
 ```
 
 Follow instructions at the prompt to create your project:
@@ -36,7 +35,7 @@ Follow instructions at the prompt to create your project:
 ### Run server
 
 ```bash
-$ yarn dev
+yarn dev
 ```
 
 Open your favorite text editor and start coding!
@@ -44,7 +43,7 @@ Open your favorite text editor and start coding!
 ## Build for production
 
 ```bash
-$ yarn build
+yarn build
 ```
 
 Build files will end up in `/dist`.
@@ -52,14 +51,24 @@ Build files will end up in `/dist`.
 ## Contributing
 
 If you want to add a feature, fix a bug or propose a change, please feel free to
-[submit an issue](https://github.com/michelegera/create-tailwindcss-boilerplate/issues/new) or [open a pull request](https://github.com/michelegera/create-tailwindcss-boilerplate/compare).
+[submit an issue][issue] or [open a pull request][pr].
 
-Thanks to [all the contributors](https://github.com/michelegera/create-tailwindcss-boilerplate/graphs/contributors)!
+Thanks to [all the contributors][contributors]!
 
 ## Acknowledgments
 
 This project piggybacks on the excellent [TailwindCSS + Parcel + PurgeCSS
-Starter Project](https://github.com/didiercatz/tailwindcss-parcel-boilerplate)
-by [didiercatz](https://github.com/didiercatz). Check out his [blog
-post](https://dev.to/didiercatz/getting-started-with-tailwindcss-in-seconds-8p2)
-on getting started with Tailwind CSS.
+Starter Project][starter-project] by [didier][didier]. Check out his
+[blog post][blog-post] on getting started with Tailwind CSS.
+
+[tailwind]: https://tailwindcss.com
+[parcel]: https://parceljs.org
+[purgecss]: https://purgecss.com
+[yarn]: https://yarnpkg.com
+[npm]: https://www.npmjs.com
+[issue]: https://github.com/michelegera/create-tailwindcss-boilerplate/issues/new
+[pr]: https://github.com/michelegera/create-tailwindcss-boilerplate/compare
+[contributors]: https://github.com/michelegera/create-tailwindcss-boilerplate/graphs/contributors
+[starter-project]: https://github.com/didier/tailwindcss-parcel-boilerplate
+[didier]: https://github.com/didier
+[blog-post]: https://dev.to/didier/getting-started-with-tailwindcss-in-seconds-8p2
