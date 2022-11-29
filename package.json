@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "execa": "^4.0.0",
-    "inquirer": "^7.1.0",
+    "inquirer": "^9.1.4",
     "listr": "^0.14.3",
     "valid-filename": "^4.0.0"
   }
