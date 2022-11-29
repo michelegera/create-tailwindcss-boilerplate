@@ -4,9 +4,9 @@
 
 import { execa } from 'execa';
 import { fileURLToPath } from 'url';
+import { Listr } from 'listr2';
 import fs from 'fs';
 import inquirer from 'inquirer';
-import Listr from 'listr';
 import path from 'path';
 import validFilename from 'valid-filename';
 
