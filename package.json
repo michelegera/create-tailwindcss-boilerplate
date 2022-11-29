@@ -6,6 +6,7 @@
   "author": "Michele Gerarduzzi <michelegera@users.noreply.github.com>",
   "repository": "https://github.com/michelegera/create-tailwindcss-boilerplate",
   "license": "MIT",
+  "type": "module",
   "keywords": [
     "boilerplate",
     "css",
@@ -17,18 +18,18 @@
   ],
   "devDependencies": {
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.26.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-prettier": "^3.4.0",
-    "husky": "^6.0.0",
-    "lint-staged": "^11.0.0",
-    "prettier": "^2.3.0"
+    "eslint": "^8.28.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.0.4",
+    "prettier": "^2.8.0"
   },
   "dependencies": {
-    "execa": "^4.0.0",
-    "inquirer": "^7.1.0",
-    "listr": "^0.14.3",
-    "valid-filename": "^3.1.0"
+    "execa": "^6.1.0",
+    "inquirer": "^9.1.4",
+    "listr2": "^5.0.6",
+    "valid-filename": "^4.0.0"
   }
 }

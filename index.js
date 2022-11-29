@@ -2,13 +2,13 @@
 
 'use strict';
 
-const fs = require('fs');
-const path = require('path');
-
-const execa = require('execa');
-const Listr = require('listr');
-const inquirer = require('inquirer');
-const validFilename = require('valid-filename');
+import { execa } from 'execa';
+import { fileURLToPath } from 'url';
+import { Listr } from 'listr2';
+import fs from 'fs';
+import inquirer from 'inquirer';
+import path from 'path';
+import validFilename from 'valid-filename';
 
 const dependencies = [
   // Parcel dependencies
@@ -30,6 +30,9 @@ const questions = [
       validFilename(value.trim()) ? true : 'Please enter a valid path',
   },
 ];
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const tasks = new Listr([
   {
