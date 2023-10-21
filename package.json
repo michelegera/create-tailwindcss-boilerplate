@@ -29,7 +29,7 @@
   "dependencies": {
     "execa": "^8.0.1",
     "inquirer": "^9.2.11",
-    "listr2": "^5.0.6",
+    "listr2": "^7.0.2",
     "valid-filename": "^4.0.0"
   }
 }
