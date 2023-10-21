@@ -27,7 +27,7 @@
     "prettier": "^3.0.3"
   },
   "dependencies": {
-    "execa": "^6.1.0",
+    "execa": "^8.0.1",
     "inquirer": "^9.2.11",
     "listr2": "^5.0.6",
     "valid-filename": "^4.0.0"
